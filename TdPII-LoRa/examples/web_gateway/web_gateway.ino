@@ -64,7 +64,7 @@ void initBoard() {
   Serial.begin(115200);
   delay(20);
   SPI.begin(SCK, MISO, MOSI, SS);
-  Mcu.begin(WIFI_LORA_32_V2, 0);
+  Mcu.begin(WIFI_LoRa_32_V2, 0);
 }
 
 void initDisplay(SSD1306Wire& display) {

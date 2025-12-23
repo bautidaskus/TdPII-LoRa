@@ -111,7 +111,7 @@ void setup() {
   Serial.println(F("Ajusta kDistanceMeters y kPowerLevel antes de subir."));
 
   SPI.begin(SCK, MISO, MOSI, SS);
-  Mcu.begin(WIFI_LORA_32_V2, 0);
+  Mcu.begin(WIFI_LoRa_32_V2, 0);
   initDisplay(display);
   updateDataLine();
   renderDisplay();
