@@ -109,6 +109,7 @@ Asegurate de seleccionar una placa Heltec ESP32 en **Herramientas** → **Placa*
 TdPII-LoRa/
 ├── library.properties    # Metadatos de la biblioteca
 ├── README.md             # Este archivo
+├── PROTOCOL.md           # Especificación del protocolo
 ├── src/
 │   ├── TdPIILoRa.h       # Header de la biblioteca
 │   └── TdPIILoRa.cpp     # Implementación
@@ -118,6 +119,18 @@ TdPII-LoRa/
     └── web_gateway/      # Gateway web
 ```
 
+## Protocolo
+
+La biblioteca implementa un protocolo punto a punto con confirmación sobre LoRa.
+Cada trama lleva un header de 2 bytes (`[tipo][secuencia]`) seguido del payload:
+`0x01` para datos y `0x02` para el ACK, con hasta 253 bytes de payload de usuario.
+`send()` bloquea hasta recibir el ACK o agotar 3 s de timeout.
+
+La especificación completa —formato de trama, flujos de envío exitoso, timeout y
+frame corrupto, manejo de secuencias, parámetros configurables, cálculo de
+throughput y comparación con LoRaWAN— está en [`PROTOCOL.md`](PROTOCOL.md).
+
 ## Licencia
 
+Publicado bajo licencia MIT (ver [`LICENSE`](LICENSE)).
 Desarrollado por TdPII Team para el Taller de Proyecto II.
